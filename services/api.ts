@@ -1,6 +1,8 @@
 
 const url=`https://imdb.iamidiotareyoutoo.com/search`;
 
+     // OMDb API
+
 
 export async function Movies(movie:string){
 
@@ -11,7 +13,7 @@ export async function Movies(movie:string){
 }
 
 export async function Movie(id:string){
-     const movie=await fetch(`${url}?id=${id}`);
+     const movie=await fetch(`${url}?q=${id}`);
      const data=await movie.json();
      return data;
 }

@@ -9,8 +9,6 @@ export default async function MoviePage({params}){
 
      const data=await Movies(id);
 
-     console.log(data.description)
-
      return (
           <div className="container mx-auto">
           <Header></Header>
@@ -22,11 +20,10 @@ export default async function MoviePage({params}){
                          <div className="border rounded shadow p-4" key={ind}>
                               <Link className="block" href={`/movie/${elem["#IMDB_ID"]}`}>
 
-                                   <img className="float-end" src={elem["#IMG_POSTER"]} alt={elem["#TITLE"]} width={200} />
+                                   <img className="float-end" src={elem["#IMG_POSTER"]} alt={elem["#TITLE"]} width={200}/>
                                    <h3 className="text-2xl font-bold">{elem["#TITLE"]}</h3>
-                                   <p>YEAR: {elem["#YEAR"]}</p>
+                                   <p className="my-2">YEAR: {elem["#YEAR"]}</p>
                                    <p>ACTORS: {elem["#ACTORS"]}</p>
-                                   <p>IMDBID: {elem["#IMDB_ID"]}</p>
                                    <div className="clear-both"></div>
                               </Link>
                          </div>
