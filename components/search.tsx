@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function SearchForm(){
@@ -9,11 +9,10 @@ export default function SearchForm(){
 
      const [movie,setMovie]=useState("");
 
-     function submitMovie(e){
+     function submitMovie(e:React.SubmitEvent){
           e.preventDefault();
           router.push(`/search/${movie.trim()}`);
      }
-
 
      return (
           <>

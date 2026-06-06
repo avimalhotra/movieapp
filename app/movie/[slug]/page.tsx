@@ -2,7 +2,15 @@ import Header from "../../header";
 import Footer from "../../footer";
 import { Movie } from "@/services/api";
 
-export default async function Moviedetails({params}){
+
+interface MoviePageProps {
+     params: {
+          slug: string
+     }
+}
+
+export default async function Moviedetails({params}: MoviePageProps){
+
      const data=await params;
      
      const id=await Movie(data.slug);

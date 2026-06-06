@@ -4,10 +4,30 @@ import Link from "next/link";
 
 import { Movies } from "@/services/api";
 
-export default async function MoviePage({params}){
-     const {id}=await params; 
+type MoviePageProps = {
+     params: {
+          id: string;
+     };
+};
 
-     const data=await Movies(id);
+export default async function MoviePage({ params }: MoviePageProps) {
+     const { id } = await params;
+
+     const data = await Movies(id);
+
+     interface singleMovie{
+     "#TITLE": string,
+      "#YEAR": number,
+      "#IMDB_ID": string,
+      "#RANK": number,
+      "#ACTORS": string,
+      "#AKA": string,
+      "#IMDB_URL": string,
+      "#IMDB_IV": string,
+      "#IMG_POSTER": string,
+      "photo_width": number,
+      "photo_height": number
+     }
 
      return (
           <div className="container mx-auto">
@@ -16,7 +36,7 @@ export default async function MoviePage({params}){
                <h2 className="text-3xl font-bold">Result for {id}</h2>
                <div className="grid grid-cols-2 gap-4">
                {
-                    data?.description.map((elem,ind)=>(
+                    data?.description.map((elem:singleMovie,ind:number)=>(
                          <div className="border rounded shadow p-4" key={ind}>
                               <Link className="block" href={`/movie/${elem["#IMDB_ID"]}`}>
 
